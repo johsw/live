@@ -13,7 +13,13 @@ backend default {
   .port = "9000";
 }
 
-# Node backend
+# Grunt-backend
+backend backend {
+  .host = "127.0.0.1";
+  .port = "8000";
+}
+
+# Node api
 backend node {
   .host = "127.0.0.1";
   .port = "3000";
@@ -65,8 +71,14 @@ sub vcl_recv {
   if (req.url ~ "^/socket.io") {
       set req.backend = node;
   }
-  # Route backend to node
-  if (req.url ~ "^/backend") {
+  
+  # Route backend to well....
+  if (req.http.host ~ "^live-admin" ) {
+    set req.backend = backend;
+  }
+
+  # Route api to node
+  if (req.url ~ "^/api") {
       set req.backend = node;
   }
   

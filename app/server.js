@@ -35,10 +35,10 @@ mongoClient.connect(url, function(err, db) {
   });
   // Use body parser
   app.use(bodyParser.json());
-  
+
   // Make io accessible to our router
   app.use(function(req,res,next){
-      req.io = io;        
+      req.io = io;
       next();
   });
 
@@ -49,21 +49,21 @@ mongoClient.connect(url, function(err, db) {
         req.socket = socket;
         next();
     });
-    
-    
-    socket.emit('init', 'GO!');
+
+
+    socket.emit('init', {'msg': 'connected'});
     socket.on('history', function (data) {
       console.log(data);
     });
   });
 
   // Recieve json-posts
-  app.post('/backend/update', function(req, res){
+  app.post('/api/update', function(req, res){
     req.io.emit('update', req.body);
     res.send('RECIEVED: ' + req.body);
   });
 
-  app.get('/backend', function (req, res) {
+  app.get('/api', function (req, res) {
     res.send('RESPOND!!');
   });
   //JSON.stringify(new_tweets);

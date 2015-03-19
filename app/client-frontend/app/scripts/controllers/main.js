@@ -9,17 +9,20 @@
  */
 angular.module('clientFrontendApp')
   .controller('MainCtrl', function ($scope, socket) {
-    console.log('loaded');
+
+    $scope.connectionStatus = 'disconnected';
     $scope.updates = [];
 
     socket.on('init', function (data) {
-      console.log(data);
+      $scope.connectionStatus = data.msg;
     });
 
     socket.on('update', function(data) {
-      console.log(data);
       $scope.updates.push(data);
     });
 
+    socket.on('disconnect', function (data) {
+      $scope.connectionStatus = 'disconnected';
+    });
 
   });
