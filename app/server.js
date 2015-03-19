@@ -6,11 +6,14 @@ var port = 3000;
 server.listen(port);
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/client-frontend/index.html');
+  res.send('RESPOND!!');
 });
 
 io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
+  
+
+  
+  socket.emit('init', { hello: 'world' });
   socket.on('my other event', function (data) {
     console.log(data);
   });

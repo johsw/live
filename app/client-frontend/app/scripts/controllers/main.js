@@ -8,10 +8,11 @@
  * Controller of the clientFrontendApp
  */
 angular.module('clientFrontendApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, socket) {
+    
+    socket.on('init', function (data) {
+      console.log(data);
+    });
+    
+    
   });
