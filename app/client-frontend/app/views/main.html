@@ -1,8 +1,8 @@
 <h1>Client</h1>
 <div>Status: {{ connectionStatus }}</div>
 <ul>
-  <li ng-repeat="update in updates">
-    <h4>{{ update.time }}</h4>
+  <li ng-repeat="update in updates | orderBy:'-time'" ng-class="{{ update.importance }}">
+    <h4>{{ update.time | date:'yyyy-MM-dd HH:mm:ss'}}</h4>
     <div>{{ update.html }}</div>
   </li>
 </ul>
