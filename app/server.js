@@ -59,6 +59,7 @@ mongoClient.connect(url, function(err, db) {
 
   // Recieve json-posts
   app.post('/api/update', function(req, res){
+    req.body.time = Date.now();
     req.io.emit('update', req.body);
     res.send('RECIEVED: ' + req.body);
   });
