@@ -1,4 +1,4 @@
-// Generated on 2015-03-18 using generator-angular 0.11.1
+// Generated on 2015-03-19 using generator-angular 0.11.1
 'use strict';
 
 // # Globbing
@@ -212,7 +212,7 @@ module.exports = function (grunt) {
         imagesDir: '<%= yeoman.app %>/images',
         javascriptsDir: '<%= yeoman.app %>/scripts',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: './bower_components',
+        //importPath: './bower_components',
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
         httpFontsPath: '/styles/fonts',
@@ -227,7 +227,7 @@ module.exports = function (grunt) {
       },
       server: {
         options: {
-          sourcemap: true
+          //sourcemap: true
         }
       }
     },
