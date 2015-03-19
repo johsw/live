@@ -61,8 +61,12 @@ sub vcl_recv {
       return (pipe);
   }
   
-  # Always cache frontpage
+  # Route socket to node
   if (req.url ~ "^/socket.io") {
+      set req.backend = node;
+  }
+  # Route backend to node
+  if (req.url ~ "^/backend") {
       set req.backend = node;
   }
   
